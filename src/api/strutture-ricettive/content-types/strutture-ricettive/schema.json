@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "strutture_ricettives",
+  "info": {
+    "singularName": "strutture-ricettive",
+    "pluralName": "strutture-ricettives",
+    "displayName": "Strutture Ricettive",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "titolo": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "categoria_strutture": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::categoria-strutture.categoria-strutture",
+      "inversedBy": "strutture_ricettives"
+    },
+    "stagionalita": {
+      "type": "enumeration",
+      "enum": [
+        "Estiva",
+        "Tutto l'anno"
+      ]
+    },
+    "descrizioneStruttura": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.rich-text"
+    },
+    "indirizzoStruttura": {
+      "type": "string",
+      "required": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "telefonoStruttura": {
+      "type": "string"
+    },
+    "emailStruttura": {
+      "type": "string"
+    },
+    "sitowebStruttura": {
+      "type": "string"
+    },
+    "servizi_strutturas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::servizi-struttura.servizi-struttura",
+      "inversedBy": "strutture_ricettives"
+    }
+  }
+}

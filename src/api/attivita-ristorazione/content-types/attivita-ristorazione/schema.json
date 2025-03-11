@@ -1,0 +1,72 @@
+{
+  "kind": "collectionType",
+  "collectionName": "attivita_ristoraziones",
+  "info": {
+    "singularName": "attivita-ristorazione",
+    "pluralName": "attivita-ristoraziones",
+    "displayName": "Attività Ristorazione",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "titolo": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "servizi_strutturas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::servizi-struttura.servizi-struttura",
+      "mappedBy": "attivita_ristoraziones"
+    },
+    "categoria_ristorazione": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::categoria-ristorazione.categoria-ristorazione",
+      "inversedBy": "attivita_ristoraziones"
+    },
+    "stagione": {
+      "type": "enumeration",
+      "enum": [
+        "Estate",
+        "Autunno",
+        "Inverno",
+        "Primavera"
+      ]
+    },
+    "description": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.rich-text"
+    },
+    "indirizzo": {
+      "type": "string"
+    },
+    "telefono": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "sitoweb": {
+      "type": "string"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "seo-component.seo"
+    }
+  }
+}

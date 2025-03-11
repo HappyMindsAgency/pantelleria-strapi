@@ -43,16 +43,6 @@
         }
       }
     },
-    "seo": {
-      "type": "component",
-      "repeatable": false,
-      "component": "seo-component.seo",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "content": {
       "type": "dynamiczone",
       "components": [
@@ -71,6 +61,29 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::tematica-poi.tematica-poi",
+      "inversedBy": "pois"
+    },
+    "indirizzoCompleto": {
+      "type": "string"
+    },
+    "googleMapsLink": {
+      "type": "string"
+    },
+    "orario": {
+      "type": "string"
+    },
+    "contatti": {
+      "type": "text"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "seo-component.seo"
+    },
+    "tema": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tema.tema",
       "inversedBy": "pois"
     }
   }

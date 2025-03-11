@@ -1,0 +1,104 @@
+{
+  "kind": "collectionType",
+  "collectionName": "eventis",
+  "info": {
+    "singularName": "eventi",
+    "pluralName": "eventis",
+    "displayName": "Eventi",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "titolo": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "cover": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "tema": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tema.tema",
+      "inversedBy": "eventis"
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.slider",
+        "shared.rich-text",
+        "shared.quote",
+        "shared.media"
+      ],
+      "required": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "dataInizioEvento": {
+      "type": "date"
+    },
+    "dataFineEvento": {
+      "type": "date"
+    },
+    "oraInizioEvento": {
+      "type": "time"
+    },
+    "oraFineEvento": {
+      "type": "time"
+    },
+    "luogoEvento": {
+      "type": "string",
+      "required": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "prezzoEvento": {
+      "type": "string"
+    },
+    "organizzatoriEvento": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.rich-text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "linkEvento": {
+      "type": "string"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "seo-component.seo"
+    }
+  }
+}

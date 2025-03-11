@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categoria_struttures",
+  "info": {
+    "singularName": "categoria-strutture",
+    "pluralName": "categoria-struttures",
+    "displayName": "Categoria Strutture"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "nome": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "strutture_ricettives": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::strutture-ricettive.strutture-ricettive",
+      "mappedBy": "categoria_strutture"
+    }
+  }
+}

@@ -439,6 +439,63 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAttivitaRistorazioneAttivitaRistorazione
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'attivita_ristoraziones';
+  info: {
+    description: '';
+    displayName: 'Attivit\u00E0 Ristorazione';
+    pluralName: 'attivita-ristoraziones';
+    singularName: 'attivita-ristorazione';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    categoria_ristorazione: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::categoria-ristorazione.categoria-ristorazione'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Component<'shared.rich-text', false>;
+    email: Schema.Attribute.String;
+    indirizzo: Schema.Attribute.String;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::attivita-ristorazione.attivita-ristorazione'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'seo-component.seo', false>;
+    servizi_strutturas: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::servizi-struttura.servizi-struttura'
+    >;
+    sitoweb: Schema.Attribute.String;
+    stagione: Schema.Attribute.Enumeration<
+      ['Estate', 'Autunno', 'Inverno', 'Primavera']
+    >;
+    telefono: Schema.Attribute.String;
+    titolo: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiAttivitaAttivita extends Struct.CollectionTypeSchema {
   collectionName: 'attivitas';
   info: {
@@ -531,6 +588,96 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCategoriaRistorazioneCategoriaRistorazione
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'categoria_ristoraziones';
+  info: {
+    description: '';
+    displayName: 'Categoria Ristorazione';
+    pluralName: 'categoria-ristoraziones';
+    singularName: 'categoria-ristorazione';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    attivita_ristoraziones: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::attivita-ristorazione.attivita-ristorazione'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::categoria-ristorazione.categoria-ristorazione'
+    >;
+    nome: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCategoriaStruttureCategoriaStrutture
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'categoria_struttures';
+  info: {
+    displayName: 'Categoria Strutture';
+    pluralName: 'categoria-struttures';
+    singularName: 'categoria-strutture';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::categoria-strutture.categoria-strutture'
+    >;
+    nome: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    strutture_ricettives: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::strutture-ricettive.strutture-ricettive'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
@@ -557,6 +704,72 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiEventiEventi extends Struct.CollectionTypeSchema {
+  collectionName: 'eventis';
+  info: {
+    description: '';
+    displayName: 'Eventi';
+    pluralName: 'eventis';
+    singularName: 'eventi';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    content: Schema.Attribute.DynamicZone<
+      ['shared.slider', 'shared.rich-text', 'shared.quote', 'shared.media']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    cover: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dataFineEvento: Schema.Attribute.Date;
+    dataInizioEvento: Schema.Attribute.Date;
+    linkEvento: Schema.Attribute.String;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::eventi.eventi'>;
+    luogoEvento: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    oraFineEvento: Schema.Attribute.Time;
+    oraInizioEvento: Schema.Attribute.Time;
+    organizzatoriEvento: Schema.Attribute.Component<'shared.rich-text', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    prezzoEvento: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'seo-component.seo', false>;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    tema: Schema.Attribute.Relation<'manyToOne', 'api::tema.tema'>;
+    titolo: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -611,6 +824,7 @@ export interface ApiPoiPoi extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    contatti: Schema.Attribute.Text;
     content: Schema.Attribute.DynamicZone<
       ['shared.slider', 'shared.rich-text', 'shared.quote', 'shared.media']
     > &
@@ -628,16 +842,15 @@ export interface ApiPoiPoi extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    googleMapsLink: Schema.Attribute.String;
+    indirizzoCompleto: Schema.Attribute.String;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::poi.poi'>;
+    orario: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    seo: Schema.Attribute.Component<'seo-component.seo', false> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    seo: Schema.Attribute.Component<'seo-component.seo', false>;
     slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    tema: Schema.Attribute.Relation<'manyToOne', 'api::tema.tema'>;
     tematica_poi: Schema.Attribute.Relation<
       'manyToOne',
       'api::tematica-poi.tematica-poi'
@@ -649,6 +862,152 @@ export interface ApiPoiPoi extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiServiziStrutturaServiziStruttura
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'servizi_strutturas';
+  info: {
+    description: '';
+    displayName: 'Servizi Struttura';
+    pluralName: 'servizi-strutturas';
+    singularName: 'servizi-struttura';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    attivita_ristoraziones: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::attivita-ristorazione.attivita-ristorazione'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::servizi-struttura.servizi-struttura'
+    >;
+    nome: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    strutture_ricettives: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::strutture-ricettive.strutture-ricettive'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiStruttureRicettiveStruttureRicettive
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'strutture_ricettives';
+  info: {
+    description: '';
+    displayName: 'Strutture Ricettive';
+    pluralName: 'strutture-ricettives';
+    singularName: 'strutture-ricettive';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    categoria_strutture: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::categoria-strutture.categoria-strutture'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    descrizioneStruttura: Schema.Attribute.Component<'shared.rich-text', false>;
+    emailStruttura: Schema.Attribute.String;
+    indirizzoStruttura: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::strutture-ricettive.strutture-ricettive'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    servizi_strutturas: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::servizi-struttura.servizi-struttura'
+    >;
+    sitowebStruttura: Schema.Attribute.String;
+    stagionalita: Schema.Attribute.Enumeration<['Estiva', "Tutto l'anno"]>;
+    telefonoStruttura: Schema.Attribute.String;
+    titolo: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTemaTema extends Struct.CollectionTypeSchema {
+  collectionName: 'temas';
+  info: {
+    displayName: 'Tema';
+    pluralName: 'temas';
+    singularName: 'tema';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    eventis: Schema.Attribute.Relation<'oneToMany', 'api::eventi.eventi'>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::tema.tema'>;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    pois: Schema.Attribute.Relation<'oneToMany', 'api::poi.poi'>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1307,11 +1666,18 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
       'api::article.article': ApiArticleArticle;
+      'api::attivita-ristorazione.attivita-ristorazione': ApiAttivitaRistorazioneAttivitaRistorazione;
       'api::attivita.attivita': ApiAttivitaAttivita;
       'api::author.author': ApiAuthorAuthor;
+      'api::categoria-ristorazione.categoria-ristorazione': ApiCategoriaRistorazioneCategoriaRistorazione;
+      'api::categoria-strutture.categoria-strutture': ApiCategoriaStruttureCategoriaStrutture;
       'api::category.category': ApiCategoryCategory;
+      'api::eventi.eventi': ApiEventiEventi;
       'api::global.global': ApiGlobalGlobal;
       'api::poi.poi': ApiPoiPoi;
+      'api::servizi-struttura.servizi-struttura': ApiServiziStrutturaServiziStruttura;
+      'api::strutture-ricettive.strutture-ricettive': ApiStruttureRicettiveStruttureRicettive;
+      'api::tema.tema': ApiTemaTema;
       'api::tematica-attivita.tematica-attivita': ApiTematicaAttivitaTematicaAttivita;
       'api::tematica-experience.tematica-experience': ApiTematicaExperienceTematicaExperience;
       'api::tematica-poi.tematica-poi': ApiTematicaPoiTematicaPoi;

@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "servizi_strutturas",
+  "info": {
+    "singularName": "servizi-struttura",
+    "pluralName": "servizi-strutturas",
+    "displayName": "Servizi Struttura",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "nome": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "strutture_ricettives": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::strutture-ricettive.strutture-ricettive",
+      "mappedBy": "servizi_strutturas"
+    },
+    "attivita_ristoraziones": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::attivita-ristorazione.attivita-ristorazione",
+      "inversedBy": "servizi_strutturas"
+    }
+  }
+}
