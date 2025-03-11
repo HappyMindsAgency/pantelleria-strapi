@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tematica_pois",
+  "info": {
+    "singularName": "tematica-poi",
+    "pluralName": "tematica-pois",
+    "displayName": "Tematica Poi",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "pois": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::poi.poi",
+      "mappedBy": "tematica_poi"
+    }
+  }
+}

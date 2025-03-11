@@ -1,0 +1,75 @@
+{
+  "kind": "collectionType",
+  "collectionName": "attivitas",
+  "info": {
+    "singularName": "attivita",
+    "pluralName": "attivitas",
+    "displayName": "Attività",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "titolo": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.slider",
+        "shared.rich-text",
+        "shared.quote",
+        "shared.media"
+      ],
+      "required": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "tematica_attivita": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tematica-attivita.tematica-attivita",
+      "inversedBy": "attivitas"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "seo-component.seo",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}

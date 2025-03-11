@@ -43,7 +43,7 @@ export interface SeoComponentSeo extends Struct.ComponentSchema {
     metaImage: Schema.Attribute.Media<'images' | 'files' | 'videos'> &
       Schema.Attribute.Required;
     metaRobots: Schema.Attribute.String;
-    metaSocial: Schema.Attribute.Component<'seo-component.meta-social', false>;
+    metaSocial: Schema.Attribute.Component<'seo-component.meta-social', true>;
     metaTitle: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{

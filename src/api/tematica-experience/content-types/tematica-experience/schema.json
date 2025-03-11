@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tematica_experiences",
+  "info": {
+    "singularName": "tematica-experience",
+    "pluralName": "tematica-experiences",
+    "displayName": "Tematica Experience"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}

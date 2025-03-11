@@ -30,7 +30,7 @@
     },
     "metaSocial": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "seo-component.meta-social"
     },
     "keywords": {

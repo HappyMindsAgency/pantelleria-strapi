@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tematica_attivitas",
+  "info": {
+    "singularName": "tematica-attivita",
+    "pluralName": "tematica-attivitas",
+    "displayName": "Tematica Attività",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "attivitas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::attivita.attivita",
+      "mappedBy": "tematica_attivita"
+    }
+  }
+}
